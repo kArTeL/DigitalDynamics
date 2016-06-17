@@ -7,4 +7,7 @@ public class MCustomer {
 
     private String _id;
 
+    public MCustomer(String id) {
+        _id = id;
+    }
 }

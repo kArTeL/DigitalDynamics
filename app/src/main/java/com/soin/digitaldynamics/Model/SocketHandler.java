@@ -75,8 +75,9 @@ class SocketManager {
             _socket.on(Socket.EVENT_DISCONNECT,onDisconnect);
             _socket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
             _socket.on(Socket.EVENT_CONNECT_TIMEOUT, onConnectTimeOut);
-            
+
             _socket.on("spin-on",onActive );
+
             _socket.on("cantSubscribe",onSessionKill);
             _socket.on("handle-error",onError);
             _socket.on("refresh-dynamic",onRefresh);

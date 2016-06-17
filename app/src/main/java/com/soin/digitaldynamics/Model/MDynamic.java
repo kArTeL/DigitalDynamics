@@ -2,46 +2,90 @@ package com.soin.digitaldynamics.Model;
 
 import org.json.JSONObject;
 
-import java.net.Socket;
-
 
 /**
  * Created by neilgarciavargas on 17/6/16.
  */
 public abstract  class MDynamic implements SocketEventListener {
 
-    private String beaconIdentifier;
+    private String _beaconIdentifier;
 
     private SocketManager _manager;
 
+    private MCustomer _customer;
+
+    /**
+     * Default constructor
+     * @param manager
+     * @param beaconIdentifier
+     */
+    public MDynamic(SocketManager manager, String beaconIdentifier) {
+        _manager = manager;
+        _beaconIdentifier = beaconIdentifier;
+    }
+
+    /**
+     * Get BeaconIdentifier
+     *
+     * @return BeaconIdentifier as String
+     */
+    public String getBeaconIdentifier() {
+        return _beaconIdentifier;
+    }
+
+    /**
+     * Set BeaconIdentifier
+     */
+    public void setBeaconIdentifier(String beaconIdentifier) {
+        _beaconIdentifier = beaconIdentifier;
+    }
+
+    /**
+     * Get Manager
+     *
+     * @return Manager as SocketManager
+     */
+    public SocketManager getManager() {
+        return _manager;
+    }
+
+    /**
+     * Set Manager
+     */
+    public void setManager(SocketManager manager) {
+        _manager = manager;
+    }
+
+    /**
+     * Get Customer
+     *
+     * @return Customer as MCustomer
+     */
+    public MCustomer getCustomer() {
+        return _customer;
+    }
+
+    /**
+     * Set Customer
+     */
+    public void setCustomer(MCustomer customer) {
+        _customer = customer;
+    }
 
 
-    public abstract void setSocketManager(SocketManager socketManager);
-
-    public abstract SocketManager getSocketManager();
-
-
-    public void connectToSocket() {
-        if (getSocketManager() != null)
+    /** Socket methods **/
+    public void initSocket() {
+        if (getManager() != null)
         {
 
-            _manager.connectWithBeacon(beaconIdentifier);
+            _manager.setEventListener(this);
+            _manager.connectWithBeacon(_beaconIdentifier);
         }
     }
 
-    public void disconnectToSocket()
+    public void disconnectSocket()
     {
         _manager.disconnect();
-    }
-
-    public void activated(JSONObject object)
-    {
-
-    }
-
-    void error(JSONObject object)
-    {
-
     }
 
 
