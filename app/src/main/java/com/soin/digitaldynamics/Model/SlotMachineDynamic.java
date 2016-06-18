@@ -1,5 +1,7 @@
 package com.soin.digitaldynamics.Model;
 
+import android.util.Log;
+
 import org.json.JSONObject;
 
 /**
