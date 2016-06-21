@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DigitalDynamics</string>
+
+
+    <!--Slot Machine-->
+    <string name="tea">Te</string>
 </resources>
