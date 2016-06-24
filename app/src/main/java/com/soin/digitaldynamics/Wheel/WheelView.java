@@ -131,7 +131,8 @@ public class WheelView extends View implements SlotReelScroller.ScrollingListene
 		visibleSlotItems = visible;
 	}
 	
-	public void scroll(int distance, int duration) {		
+	public void scroll(int distance, int duration) {
+		//distance = 1000;
 		if (distance != 0 ) {
 			checkForMiddling = true;
 			mReelScroller.scroll(distance, duration);

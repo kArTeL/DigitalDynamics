@@ -27,4 +27,6 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile files('libs/socketio.jar')
+    compile 'com.koushikdutta.async:androidasync:2.+'
 }

@@ -69,8 +69,8 @@ public class SlotMachineActivity extends BaseActivity implements SlotMachineView
     {
         super.onCreate(savedInstanceState);
         _presenter = new SlotMachinePresenter(this);
-//        _presenter.initSocket();
-//        _presenter.connectSocket();
+        _presenter.initSocket();
+        _presenter.connectSocket();
         _presenter.getSlotMachineItems();
 
     }
@@ -250,9 +250,9 @@ public class SlotMachineActivity extends BaseActivity implements SlotMachineView
 
         wheelView3.setSlotItems(slotItemsView3);
 
-        wheelView1.setNumberOfVisibleItems(2);
-        wheelView2.setNumberOfVisibleItems(2);
-        wheelView3.setNumberOfVisibleItems(2);
+        wheelView1.setNumberOfVisibleItems(3);
+        wheelView2.setNumberOfVisibleItems(3);
+        wheelView3.setNumberOfVisibleItems(3);
 
         wheelView1.setWheelBackground(getResources().getDrawable(R.drawable.wheel_frame));
         wheelView2.setWheelBackground(getResources().getDrawable(R.drawable.wheel_frame));
@@ -292,13 +292,16 @@ public class SlotMachineActivity extends BaseActivity implements SlotMachineView
         // Vary the time and distance range to obtain
         // randomness of wheel scrolling.
         int randomMultipler = random.nextInt(9);
-        wheelView1.scroll(4000 + ( 100 * randomMultipler), 1000);
 
-        randomMultipler = random.nextInt(9);
-        wheelView2.scroll(4000 + ( 100 * randomMultipler), 1000);
+        int randomValue =  4000 + ( 100 * randomMultipler);
+        wheelView1.scroll(randomValue, 1000);
 
-        randomMultipler = random.nextInt(9);
-        wheelView3.scroll(4000 + ( 100 * randomMultipler), 1000);
+        //randomMultipler = random.nextInt(18);
+        wheelView2.scroll(randomValue*2, 2000);
+
+
+        //randomMultipler = random.nextInt(26);
+        wheelView3.scroll(randomValue*3, 3000);
 
         Message msg = Message.obtain();
         msg.what = MESSAGE_CHECK_MATCH;

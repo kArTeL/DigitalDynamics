@@ -3,6 +3,7 @@ package com.soin.digitaldynamics.Wheel;
 import android.content.Context;
 import android.os.Handler;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.Scroller;
 
 /**
@@ -40,6 +41,8 @@ public class SlotReelScroller implements Runnable {
     public SlotReelScroller(Context context, ScrollingListener listener) {
     	mHandler = new Handler();
     	mScroller = new Scroller(context, new AccelerateDecelerateInterpolator());
+    	//mScroller = new Scroller(context, new AccelerateInterpolator());
+    	//mScroller = new Scroller(context);
     	mScrollListener = listener;
     }
     

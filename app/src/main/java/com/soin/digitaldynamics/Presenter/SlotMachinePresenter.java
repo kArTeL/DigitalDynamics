@@ -26,7 +26,7 @@ public class SlotMachinePresenter extends BasePresenter {
     public SlotMachinePresenter(SlotMachineView slotMachineView){
         _slotMachineView = slotMachineView;
 
-        //initSocket();
+        initSocket();
     }
 
     @Override

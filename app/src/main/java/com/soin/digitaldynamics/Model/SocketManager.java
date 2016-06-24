@@ -3,7 +3,10 @@ import com.soin.digitaldynamics.Model.SlotMachine.SlotMachineDynamic;
 
 import org.json.JSONObject;
 
+import java.net.URI;
+
 import io.socket.client.IO;
+import io.socket.client.Manager;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
@@ -56,12 +59,16 @@ public class SocketManager {
             opts.forceNew = true;
 
             opts.path = Constants.getPath();
-            opts.query = "beacon=" + beacon;
+            //opts.query = "beacon=" + beacon;
             opts.reconnection = false;
             opts.reconnectionAttempts = 1;
+
+
             //opts.timeout = -1;
            // URI connectionURI = new URI(connectionString);
-            _socket = IO.socket(Constants.getHost(),opts);
+           // Manager manager = new Manager(new URI(""));
+            _socket = IO.socket(Constants.getHost());
+
 
             _socket.on(Socket.EVENT_CONNECT,onConnect);
             _socket.on(Socket.EVENT_DISCONNECT,onDisconnect);
@@ -73,6 +80,7 @@ public class SocketManager {
             _socket.on("cantSubscribe",onSessionKill);
             _socket.on("handle-error",onError);
             _socket.on("refresh-dynamic",onRefresh);
+            //_socket.io().open();
             _socket.connect();
         } catch (Exception e) {
             LOGE(TAG,e.getMessage());
