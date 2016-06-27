@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by neilgarciavargas on 21/6/16.
  */
-public class SlotMachinePresenter extends BasePresenter {
+public class SlotMachinePresenter extends BasePresenter implements SpinOnEvent {
 
     private SlotMachineDynamic _slotMachineDynamic;
 
@@ -44,7 +44,7 @@ public class SlotMachinePresenter extends BasePresenter {
     {
         String beaconString = "85A98C98-58E1-485E-948F-EAEED9AA1EA6-76-21";
         SocketManager socketManager = new SocketManager();
-        _slotMachineDynamic = new SlotMachineDynamic(socketManager,beaconString);
+        _slotMachineDynamic = new SlotMachineDynamic(socketManager,beaconString,this);
 
     }
 
@@ -89,4 +89,8 @@ public class SlotMachinePresenter extends BasePresenter {
     }
 
 
+    @Override
+    public void spinOn() {
+        _slotMachineView.spinOn();
+    }
 }

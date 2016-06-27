@@ -3,6 +3,7 @@ package com.soin.digitaldynamics.Model.SlotMachine;
 
 import com.soin.digitaldynamics.Model.MDynamic;
 import com.soin.digitaldynamics.Model.SocketManager;
+import com.soin.digitaldynamics.Presenter.SpinOnEvent;
 
 import org.json.JSONObject;
 
@@ -16,12 +17,15 @@ public class SlotMachineDynamic extends MDynamic {
 
     private static String TAG = makeLogTag(SlotMachineDynamic.class);
 
+    private SpinOnEvent _spinOnEvent;
     //private MSlotItem[] _slotItems;
 
-    public SlotMachineDynamic(SocketManager manager, String beaconIdentifier) {
+    public SlotMachineDynamic(SocketManager manager, String beaconIdentifier, SpinOnEvent spinOnEvent) {
         super(manager, beaconIdentifier);
+        _spinOnEvent = spinOnEvent;
         //_slotItems = slotItems;
     }
+
 
     @Override
     public void onConnect() {
@@ -64,9 +68,10 @@ public class SlotMachineDynamic extends MDynamic {
     }
 
     @Override
-    public void onActivate(JSONObject jsonObject)
+    public void onActivate()
     {
         LOGE(TAG,"activate (spin on)");
+        _spinOnEvent.spinOn();
     }
 
 }
