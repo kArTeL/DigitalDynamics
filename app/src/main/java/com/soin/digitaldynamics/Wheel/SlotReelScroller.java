@@ -56,9 +56,8 @@ public class SlotReelScroller implements Runnable {
     public void run() {		
 		int delta = 0;
 		mScroller.computeScrollOffset();
-		int currY = mScroller.getCurrY();		
-		
-		delta = currY - lastY;
+		int currY = mScroller.getCurrY();
+		delta = currY - 100000;
 		lastY = currY;	
 		
 		if (Math.abs(delta) != previousDistance && delta != 0) {					  

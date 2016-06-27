@@ -294,14 +294,15 @@ public class SlotMachineActivity extends BaseActivity implements SlotMachineView
         int randomMultipler = random.nextInt(9);
 
         int randomValue =  4000 + ( 100 * randomMultipler);
-        wheelView1.scroll(randomValue, 1000);
+        int distance = 1000;
+        wheelView1.scroll(randomValue, distance);
 
         //randomMultipler = random.nextInt(18);
-        wheelView2.scroll(randomValue*2, 2000);
+        wheelView2.scroll(randomValue*2, distance*2);
 
 
         //randomMultipler = random.nextInt(26);
-        wheelView3.scroll(randomValue*3, 3000);
+        wheelView3.scroll(randomValue*3, distance*3);
 
         Message msg = Message.obtain();
         msg.what = MESSAGE_CHECK_MATCH;

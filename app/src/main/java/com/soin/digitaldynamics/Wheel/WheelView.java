@@ -346,9 +346,9 @@ public class WheelView extends View implements SlotReelScroller.ScrollingListene
 	 */
 	private void positionNearestMiddleItem() {		
 		// Middle of view height  
-		int viewCenter = (mViewFullHeight - ( 2 * FRAME_PADDING))/2;
-		int distance = mSlotItems.get(visibleSlotItems).getY() - ( viewCenter - (itemHeight/2));
-		scroll(distance, 1000);
+//		int viewCenter = (mViewFullHeight - ( 2 * FRAME_PADDING))/2;
+//		int distance = mSlotItems.get(visibleSlotItems).getY() - ( viewCenter - (itemHeight/2));
+//		scroll(distance, 1000);
 		if (mScrollFinishedListener != null) {
 			mScrollFinishedListener.onWheelFinishedScrolling(mSlotItems.get(visibleSlotItems).getSlotPosition());
 		}
