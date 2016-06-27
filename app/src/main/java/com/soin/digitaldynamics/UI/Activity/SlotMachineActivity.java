@@ -126,6 +126,12 @@ public class SlotMachineActivity extends BaseActivity implements SlotMachineView
 
     }
 
+    @Override
+    public void spinOn()
+    {
+        startWheelsMovement();
+    }
+
     //Concrete implementation of interface ISlotMachineItem
     class SlotItemView implements ISlotMachineItem {
 

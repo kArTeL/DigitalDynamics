@@ -14,5 +14,5 @@ public interface SocketEventListener {
     void onDisconnect();
     void onError(JSONObject jsonObject);
     void onRefresh();
-    void onActivate(JSONObject jsonObject);
+    void onActivate();
 }

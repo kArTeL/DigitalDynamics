@@ -57,17 +57,18 @@ public class SocketManager {
             //URL connectionURL = new URL(connectionString);
             IO.Options opts = new IO.Options();
             opts.forceNew = true;
-
-            opts.path = Constants.getPath();
+            opts.port = 80;
+            //opts.path = Constants.getPath();
             //opts.query = "beacon=" + beacon;
             opts.reconnection = false;
             opts.reconnectionAttempts = 1;
 
 
+
             //opts.timeout = -1;
            // URI connectionURI = new URI(connectionString);
            // Manager manager = new Manager(new URI(""));
-            _socket = IO.socket(Constants.getHost());
+            _socket = IO.socket("https://digitaldynamicstest.herokuapp.com/",opts);
 
 
             _socket.on(Socket.EVENT_CONNECT,onConnect);
@@ -122,8 +123,8 @@ public class SocketManager {
     private Emitter.Listener onActive = new Emitter.Listener() {
         @Override
         public void call(Object... args) {
-            JSONObject data = (JSONObject) args[0];
-            _eventListener.onActivate(data);
+            //JSONObject data = (JSONObject) args[0];
+            _eventListener.onActivate();
         }
     };
     private Emitter.Listener onSessionKill = new Emitter.Listener() {

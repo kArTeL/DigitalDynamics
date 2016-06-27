@@ -25,4 +25,6 @@ public interface SlotMachineView {
      */
     void diplaySlotMachineItems(ArrayList<MSlotItem> slotItems1, ArrayList<MSlotItem> slotItems2, ArrayList<MSlotItem> slotItems3);
 
+    void spinOn();
+
 }
