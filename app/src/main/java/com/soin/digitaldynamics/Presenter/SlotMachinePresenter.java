@@ -79,8 +79,19 @@ public class SlotMachinePresenter extends BasePresenter implements SpinOnEvent {
         _slotItems.add(item3);
         _slotItems.add(item4);
 
-        _slotItems2 = _slotItems;
-        _slotItems3 = _slotItems;
+        _slotItems2  = new ArrayList<MSlotItem>();
+        _slotItems2.add(item1);
+        _slotItems2.add(item2);
+        _slotItems2.add(item3);
+        _slotItems2.add(item4);
+
+
+        _slotItems3  = new ArrayList<MSlotItem>();
+        _slotItems3.add(item1);
+        _slotItems3.add(item2);
+        _slotItems3.add(item3);
+        _slotItems3.add(item4);
+
         ArrayUtil.shuffleArray(_slotItems);
         ArrayUtil.shuffleArray(_slotItems2);
         ArrayUtil.shuffleArray(_slotItems3);

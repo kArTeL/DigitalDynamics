@@ -15,6 +15,7 @@ import android.widget.Scroller;
  */
 public class SlotReelScroller implements Runnable {
 
+    int delayVelocity = 45;
     /**
      * Scrolling listener interface
      */
@@ -37,12 +38,14 @@ public class SlotReelScroller implements Runnable {
     int lastY = 0;
     private int distance;
     private int previousDistance;
+
+    private int offsetY = 0;
     
     public SlotReelScroller(Context context, ScrollingListener listener) {
     	mHandler = new Handler();
     	mScroller = new Scroller(context, new AccelerateDecelerateInterpolator());
-    	//mScroller = new Scroller(context, new AccelerateInterpolator());
-    	//mScroller = new Scroller(context);
+    	//mScroller = new Scroller(context, new AccelerateInterpolator());/
+         //mScroller = new Scroller(context);
     	mScrollListener = listener;
     }
     
@@ -53,23 +56,20 @@ public class SlotReelScroller implements Runnable {
     	mHandler.post(this);
     }
     
-    public void run() {		
-		int delta = 0;
-		mScroller.computeScrollOffset();
-		int currY = mScroller.getCurrY();
-		delta = currY - 100000;
-		lastY = currY;	
-		
-		if (Math.abs(delta) != previousDistance && delta != 0) {					  
-			mScrollListener.onScroll(delta);
-		}			
-		
-		if (mScroller.isFinished() == false) {
-			//Post this runnable again on UI thread until all scroll values are read.
-			mHandler.post(this);
-		} else {
-			previousDistance = distance;
-			mScrollListener.onFinished();
-		}
+    public void run() {
+        mScroller.computeScrollOffset();
+        int currY = mScroller.getCurrY();
+        if (Math.abs(currY) != previousDistance && currY != 0) {
+            mScrollListener.onScroll(currY);
+        }
+        if (mScroller.isFinished() == false) {
+            //Post this runnable again on UI thread until all scroll values are read.
+            mHandler.postDelayed(this,delayVelocity);
+            delayVelocity += 1.5;
+        } else {
+            previousDistance = distance;
+            delayVelocity= 22;
+            mScrollListener.onFinished();
+        }
     }
 }

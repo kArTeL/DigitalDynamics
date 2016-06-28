@@ -291,28 +291,27 @@ public class SlotMachineActivity extends BaseActivity implements SlotMachineView
     }
     private void startWheelsMovement()
     {
-        //mediaPlayer.start();
         Random random = new Random();
         spin.setEnabled(true);
 
         // Vary the time and distance range to obtain
         // randomness of wheel scrolling.
-        int randomMultipler = random.nextInt(9);
+        int randomMultipler = generateRandomNumber(20,80);
+        wheelView1.scroll(30000+(100*randomMultipler), 2500,1,true);
 
-        int randomValue =  4000 + ( 100 * randomMultipler);
-        int distance = 1000;
-        wheelView1.scroll(randomValue, distance);
+        randomMultipler = random.nextInt(20);
+        wheelView2.scroll((44500 + (100 * randomMultipler)), 2500,2,true);
 
-        //randomMultipler = random.nextInt(18);
-        wheelView2.scroll(randomValue*2, distance*2);
-
-
-        //randomMultipler = random.nextInt(26);
-        wheelView3.scroll(randomValue*3, distance*3);
+        randomMultipler = random.nextInt(20);
+        wheelView3.scroll((67000+(100*randomMultipler)), 2500,3,true);
 
         Message msg = Message.obtain();
         msg.what = MESSAGE_CHECK_MATCH;
-       // detectAnyMatchHandler.sendMessageDelayed(msg, SPIN_TIME + 1000);
+    }
+
+    private int generateRandomNumber(int min, int max) {
+        Random random = new Random();
+        return random.nextInt(max - min + 1) + min;
     }
 
 
